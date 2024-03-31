@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mike Server</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="CSS/main.css">
+
+<style>
+#bg{
+  height:1000px;
+}
+
+h2{
+  text-align:center;
+  color:#ad5482;
+  padding-top: 5px;
+}
+
+.buttons-standard {
+  background-color: #111827;
+  border-radius: .75rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  padding: 1.2rem 1.1rem;
+  text-align: center;
+  text-decoration: none #6B7280 solid;
+  text-decoration-thickness: auto;
+  transition-duration: .2s;
+  transition-property: background-color,border-color,color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  margin: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.center-div {
+  margin-left: 30px;
+}
+</style>
+
+</head>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4"> 
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Mike Web Server</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Hola, <strong id="id-username">Mike</strong></span><br>
+      <a href="perfil.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="configuracio.html" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Administració</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió d'usuaris</a>
+    <a href="gestio_logs.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Gestió de Logs</a>
+    <a href="gestio_de_processos.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió de Processos</a>
+    <a href="monitoritzacio.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Monitorització</a>
+    <a href="filtrat_paquets.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-diamond fa-fw"></i>  Filtrat de Paquets</a>
+    <a href="tasques_preprogramades.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Tasques Preprogramades</a>
+    <a href="musica.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Música</a>
+    <a href="backup.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Backup</a>
+    <a href="configuracio.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Configuració</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Filtrat de Paquets</b></h5>
+  </header>
+
+  <main> 
+    <br>
+      <button id="reset" class="buttons-standard" onclick="reset()">Reset tables</button>
+      <button id="start" class="buttons-standard" onclick="save()">Save tables</button>
+      <button id="start" class="buttons-standard" onclick="restore()">Restore tables</button>
+    </br>
+    <h2>INPUT TABLE</h2>
+    <table id="INPUT">     
+
+    </table>
+    <h2> FORWARD TABLE</h2>
+    <table id="FORWARD">     
+
+    </table>
+    <h2>OUTPUT TABLE</h2>
+    <table id="OUTPUT">     
+
+    </table>
+
+    <div id="bg" style="height: fit-content;">
+      <div class="module"  style="height: 800px;">
+        <ul>
+          <li class="tab activeTab"><img src="https://i.imgur.com/Fk1Urva.png" alt="" class="icon"/></li>
+          <h2>Afegir paquet</h2>
+        </ul>
+        
+        <form class="form">
+          <br>
+          <div class="center-div">
+            <label for="type">Type: </label>
+            <select id="type" name="Type" class="custom-select" style="width:250px;">
+              <option value="INPUT">INPUT</option>
+              <option value="FORWARD">FORWARD</option>
+              <option value="OUTPUT">OUTPUT</option>
+            </select></br>
+          </div>
+
+          <br>
+          <div class="center-div" style="margin-bottom: 25px;">
+            <label for="target">Target: </label>
+            <select id="target" name="target" class="custom-select" style="width:250px;">
+              <option value="ACCEPT">ACCEPT</option>
+              <option value="DROP">DROP</option>
+              <option value="REJECT">REJECT</option>
+            </select></br> 
+          </div>
+    
+          <input type="text" placeholder="IP orígen" class="textbox" id="ipOrigen"/>
+          <input type="text" placeholder="IP destí" class="textbox" id="ipDesti"/>
+          <input type="text" placeholder="Interface" class="textbox" id="interface"/> 
+          <input type="text" placeholder="Protocol" class="textbox" id="protocol" />   
+          <input type="text" placeholder="Port origen" class="textbox" id="portOrigen"/>
+          <input type="text" placeholder="Port destí" class="textbox" id="portDesti"/>
+          <input type="button" value="Afegir" class="button" onclick="addToIptables()"/>
+        </form>
+      </div>
+    </div>
+   
+      </main>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+<script src="main.js"></script>
+
+<script>
+
+function showTables(iptable){
+    fetch('/cgi-bin/showIPTable.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: iptable,
+    })    
+  })
+  .then(response => response.text())
+  .then(data => {
+    
+    info = data.split(/\r?\n/);
+    const array = info.map(function(item) {
+      return item.split(/ +/);
+    });
+
+    const typeTable = iptable;
+    var table = document.getElementById(iptable);
+    table.innerHTML = "";    
+
+    for (let i = 1; i < info.length; i++) {
+      var row = document.createElement("tr");
+      for (let j = 0; j < 8; j++) {
+        var cell = document.createElement("td");
+        if(j < 6){
+          cell.textContent = array[i][j];
+        }
+        else{
+          if(j == 7){
+            if(i == 1) cell.textContent= "delete"
+            else if(array[i] != "") cell.innerHTML='<button onclick="deleteFromIptables(' + i  + ',' + typeTable +')">Delete</button>';
+          }else{
+            if(array[i].length == 6){
+              if(i == 1) cell.textContent= "others"
+              else cell.textContent = " ";
+            }else{
+              var k = j;
+              while(k < array[i].length){
+                cell.textContent += array[i][k] + " ";
+                k++;
+              }
+            }
+          }
+        }
+        row.appendChild(cell);
+      }
+      table.appendChild(row);      
+    }
+    
+  });
+}
+
+function addToIptables(){
+  if(validateForm()){
+    fetch('/cgi-bin/addIPTable.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({
+        type: document.getElementById("type").value,
+        target: document.getElementById("target").value,
+        ipOrigen: document.getElementById("ipOrigen").value,
+        ipDesti: document.getElementById("ipDesti").value,
+        interface: document.getElementById("interface").value,
+        protocol: document.getElementById("protocol").value,
+        portOrigen: document.getElementById("portOrigen").value,
+        portDesti: document.getElementById("portDesti").value,
+      })
+     })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data);
+      if(data == "OK\n"){
+        alert("Paquet afegit correctament");
+        showTables("INPUT");
+        showTables("FORWARD");
+        showTables("OUTPUT");
+      }
+      else alert("Error: no s'ha pogut afegir el paquet");
+      
+    });
+  }
+}
+
+function deleteFromIptables(id, typeTable){
+  fetch('/cgi-bin/deleteIptables.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({
+        id: id - 1,
+        type: typeTable.id,
+      })
+     })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data);
+      if(data == "OK\n"){
+        alert("Paquet eliminat correctament");
+        showTables(typeTable.id);
+      }
+      else alert("Error: no s'ha pogut eliminar el paquet");
+  });
+}
+
+function validateForm(){
+  var n1 = document.getElementById("ipOrigen").value;
+  var n2 = document.getElementById("ipDesti").value;
+  var n3 = document.getElementById("interface").value;
+  var regex = /^[0-9.]+$/;
+  if(n1 || n2 || n3){  
+    if(regex.test(n1) || regex.test(n2))
+      return true;
+      else{
+        alert("Error: IP incorrecte"); 
+        return false;
+      }
+  }else{
+    alert("Error: has d'omplir un dels següents camps: IP Origen, IP Destí o Interface");
+    return false;
+  }
+
+}
+
+function reset(){
+  fetch('/cgi-bin/configureIPTables.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: "reset",
+    })
+  })
+  .then(response => response.text())
+  .then(data => {    
+    showTables("INPUT");
+    showTables("FORWARD");
+    showTables("OUTPUT");
+  });
+}
+
+function save(){
+  fetch('/cgi-bin/configureIPTables.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: "save",
+    })
+  })
+  .then(response => response.text())
+  .then(data => {    
+    alert("Regles guardades correctament");
+    showTables("INPUT");
+    showTables("FORWARD");
+    showTables("OUTPUT");
+  });
+}
+
+function restore(){
+  fetch('/cgi-bin/configureIPTables.sh', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: "restore",
+    })
+  })
+  .then(response => response.text())
+  .then(data => {  
+    alert("Regles restaurades correctament");  
+    showTables("INPUT");
+    showTables("FORWARD");
+    showTables("OUTPUT");
+  });
+}
+
+showTables("INPUT");
+showTables("FORWARD");
+showTables("OUTPUT");
+
+</script>
+
+
+
+</body>
+</html>
+
+<style>
+  table {
+   font-family: Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   margin: auto;
+ }
+ 
+ td, th {
+   border: 1px solid #ddd;
+   padding: 8px;
+   text-align: center;
+ }
+
+  
+ tr:nth-child(even){background-color: #f2f2f2;}
+ 
+ tr:hover {background-color: #ddd;}
+ 
+ 
+ table tr:first-of-type {
+   background-color: #90c843;
+ }
+ 
+ 
+ table td{
+   max-width: 200px;
+   min-width: 100px;
+ }
+ 
+
+ 
+ </style>

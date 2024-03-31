@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mike Server</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/monitoritzacio.css">
+    <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "",
+      "logo": "images/default-logo.png"
+  }</script>
+      <meta name="theme-color" content="#478ac9">
+      <meta property="og:title" content="Casa">
+      <meta property="og:type" content="website">
+</head>
+
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4"> 
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Mike Web Server</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Hola, <strong id="id-username">Mike</strong></span><br>
+      <a href="perfil.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="configuracio.html" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Administració</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió d'usuaris</a>
+    <a href="gestio_logs.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Gestió de Logs</a>
+    <a href="gestio_de_processos.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió de Processos</a>
+    <a href="monitoritzacio.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bullseye fa-fw"></i>  Monitorització</a>
+    <a href="filtrat_paquets.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Filtrat de Paquets</a>
+    <a href="tasques_preprogramades.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Tasques Preprogramades</a>
+    <a href="musica.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Música</a>
+    <a href="backup.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Backup</a>
+    <a href="configuracio.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Configuració</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Monitorització</b></h5>
+  </header>
+
+  <main>
+    <div class="box">
+      <div class="box__header">
+        <h3 class="box__header-title">Ús de la CPU</h3>
+      </div>
+      <div class="box__body">
+        <div class="stats stats--main">
+          <div class="stats__amount" id="cpu-usage">X</div>
+        </div> 
+      </div>
+
+      <div class="box__header">
+        <h3 class="box__header-title">Càrrega CPU</h3>
+      </div>
+      <div class="box__body">
+        <div class="stats stats--main">
+          <div class="stats__amount" id="cpu-load-1">X</div>
+          <div class="stats__caption">Últim minut</div>
+        </div> 
+        <div class="stats stats--main">
+          <div class="stats__amount" id="cpu-load-5">X</div>
+          <div class="stats__caption">Últims 5 minuts</div>
+        </div> 
+        <div class="stats stats--main">
+          <div class="stats__amount" id="cpu-load-15">X</div>
+          <div class="stats__caption">Últims 15 minuts</div>
+        </div> 
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box__header">
+        <h3 class="box__header-title">Memòria</h3>
+      </div>
+      <div class="box__body">
+        <div class="stats stats--main">
+          <div class="stats__amount" id="memory-percentage">X</div>
+          <div class="stats__caption">Percentatge d'ús</div>
+        </div> 
+        <div class="stats stats--main">
+          <div class="stats__amount" id="memory-total">X</div>
+          <div class="stats__caption">Total</div>
+        </div>
+        <div class="stats stats--main">
+          <div class="stats__amount" id="memory-used">X</div>
+          <div class="stats__caption">Usats</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box__header">
+        <h3 class="box__header-title">Disc</h3>
+      </div>
+      <div class="box__body">
+        <div class="stats stats--main">
+          <div class="stats__amount" id="disk-percentage">X</div>
+          <div class="stats__caption">Percentatge d'ús</div>
+        </div> 
+        <div class="stats stats--main">
+          <div class="stats__amount" id="disk-total">X</div>
+          <div class="stats__caption">Total</div>
+        </div>
+        <div class="stats stats--main">
+          <div class="stats__amount" id="disk-used">X</div>
+          <div class="stats__caption">Usats</div>
+        </div>
+      </div>
+    </div>
+    <div class="ultims-logs">
+      <h1>Últims 10 logs</h1>
+      <div id="last-logs"></div>
+      <h1 class="small-margin">Temps Servidor obert</h1>
+      <p id="server-time">X hores X minuts</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+<script src="main.js"></script>
+<script>
+  // Fetching data from monitoritzacio.sh
+  function showMonitoring(){
+  fetch('/cgi-bin/monitoritzacio.sh', {
+    method: 'POST',
+  })
+  .then(response => response.text())
+  .then(data => {
+    const split_data = data.split("\n"); 
+    console.log(split_data);       
+    // Inserting cpu information
+    if(split_data[0].length > 5) {
+      document.getElementById("cpu-usage").innerHTML  = split_data[0].substring(0, 5) + "%";
+    } else {
+      document.getElementById("cpu-usage").innerHTML = split_data[0];
+    }
+    
+    const split_cpu_load = split_data[1].split(",");
+    document.getElementById("cpu-load-1").innerHTML = split_cpu_load[0];
+    document.getElementById("cpu-load-5").innerHTML = split_cpu_load[1];
+    document.getElementById("cpu-load-15").innerHTML = split_cpu_load[2];
+
+    // Inserting memory information
+    document.getElementById("memory-total").innerHTML = split_data[2];
+    document.getElementById("memory-used").innerHTML = split_data[3];
+    document.getElementById("memory-percentage").innerHTML = split_data[4];
+
+    // Inserting disk information
+    document.getElementById("disk-total").innerHTML = split_data[5];
+    document.getElementById("disk-used").innerHTML = split_data[6];
+    document.getElementById("disk-percentage").innerHTML = split_data[7];
+    
+    // Inserting server uptime information
+    const split_uptime = split_data[8].split(":");
+    // print split_uptime size
+    console.log(split_uptime.length);
+    if (split_uptime.length > 1) {
+      document.getElementById("server-time").innerHTML = split_uptime[0] + " hores " + split_uptime[1] + " minuts";
+    } else {
+      document.getElementById("server-time").innerHTML = "0 hores " + split_uptime[0] + "uts";
+    }
+
+    // Inserting uptime information
+    for (let i = 9; i < split_data.length; i++) {
+      var p = document.createElement("p");
+      p.innerHTML = split_data[i];
+      document.getElementById("last-logs").append(p);       
+    }
+
+  });
+}
+
+showMonitoring();
+</script>
+
+</body>
+</html>

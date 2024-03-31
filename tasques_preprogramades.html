@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mike Server</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="CSS/main.css">
+<link rel="stylesheet" href="CSS/index.css">
+<link rel="stylesheet" href="CSS/tasques_preprogramades.css">
+
+</head>
+<body class="w3-light-grey">
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4"> 
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Mike Web Server</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Hola, <strong id="id-username">Mike</strong></span><br>
+      <a href="perfil.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="configuracio.html" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Administració</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió d'usuaris</a>
+    <a href="gestio_logs.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Gestió de Logs</a>
+    <a href="gestio_de_processos.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Gestió de Processos</a>
+    <a href="monitoritzacio.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Monitorització</a>
+    <a href="filtrat_paquets.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Filtrat de Paquets</a>
+    <a href="tasques_preprogramades.html" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-bell fa-fw"></i>  Tasques Preprogramades</a>
+    <a href="musica.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Música</a>
+    <a href="backup.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Backup</a>
+    <a href="configuracio.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Configuració</a><br><br>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+  <!-- Header -->
+  <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Tasques Preprogramades</b></h5>
+  </header>
+
+  <main>
+    <h1>Afegir tasca</h1>  
+    <div>
+        <h2>Minut</h2>
+        <span class="rangeValue" id="rangeValue-minuts">0</span>
+        <Input class="range" type="range" name "" value="0" min="0" max="59" onChange="rangeSlide(this.value, 'rangeValue-minuts')" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+
+    <div>
+      <h2>Hora</h2>
+      <span class="rangeValue" id="rangeValue-hores">0</span>
+      <Input class="range" type="range" name "" value="0" min="0" max="23" onChange="rangeSlide(this.value, 'rangeValue-hores')" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+
+    <div>
+      <h2>Dia</h2>
+      <span class="rangeValue" id="rangeValue-dies">0</span>
+      <Input class="range" type="range" name "" value="0" min="0" max="31" onChange="rangeSlide(this.value, 'rangeValue-dies')" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+
+    <div>
+      <h2>Mes</h2>
+      <span class="rangeValue" id="rangeValue-mesos">1</span>
+      <Input class="range" type="range" name "" value="1" min="1" max="12" onChange="rangeSlide(this.value, 'rangeValue-mesos')" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+    
+    <div>
+      <h2>Dia setmana</h2>
+      <span class="rangeValue" id="rangeValue-dies-setmana">0</span>
+      <Input class="range" type="range" name "" value="0" min="0" max="7" onChange="rangeSlide(this.value, 'rangeValue-dies-setmana')" onmousemove="rangeSlide(this.value)"></Input>
+    </div>
+
+    <div id="add-task">
+        <input type="button" value="Afegir" class="button" onclick="addTask()"/>
+    </div>
+  </main>
+      <!-- <br><br><br><br><br> -->
+      <h1>Tasques del sistema</h1>  
+      <div id="center">
+        <div class="col-md-8">
+          <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+              <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i
+                  class="fa fa-tasks"></i>&nbsp;Tasques del sistema</div>
+              
+            </div>
+            <div class="scroll-area-sm">
+              <perfect-scrollbar class="ps-show-limits">
+                <div style="position: static;" class="ps ps--active-y">
+                  <div class="ps-content">
+                    <ul class=" list-group list-group-flush" id="llista-tasques">
+  
+                    </ul>
+                  </div>            
+                </div>
+              </perfect-scrollbar>
+            </div>
+          </div>
+        </div>
+      </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-16 w3-light-grey">
+
+  </footer>
+
+  <!-- End page content -->
+</div>
+
+<script src="main.js"></script>
+<script>
+  function rangeSlide(value, id) {
+      document.getElementById(id).innerHTML = value;
+  }
+
+  function deleteUser(id) {
+    user = id.innerHTML;
+    console.log(id.innerHTML);
+
+    fetch('/cgi-bin/del_user.sh', { //TODO: change this to del_task.sh
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: user,
+    })
+  })
+  .then(response => response.text())
+  listTasks();
+  }
+
+  function listTasks() {
+  fetch('/cgi-bin/list_users.sh', { // TODO: change this to list_tasks.sh
+    method: 'POST',
+  })
+  .then(response => response.text())
+  .then(data => {
+    const users = data.split("\n");
+    console.log(users)
+    // We need to clear the list
+    let put = document.getElementById("llista-tasques");
+    put.innerHTML = "";
+    for (let i = 0; i < users.length; i++) {
+      if(users[i] == "") {
+        break;
+      }
+      // We need to add an specific id to each user
+      put.innerHTML+= '<li class="list-group-item"><div class="widget-content p-0"><div class="widget-content-wrapper"><div class="widget-content-left mr-3"><div class="widget-content-left"><img width="40" class="rounded-circle" src="https://i.imgur.com/Fk1Urva.png" alt=""></div></div><div class="widget-content-left flex2"><div class="widget-heading" id="miDiv' + i +'">'+ users[i] + '</div></div><div class="widget-content-right"><div class="font-size-xlg text-muted"><button class="mb-2 mr-2 btn-transition btn btn-outline-danger" onclick="deleteUser('+ "miDiv" + i + ')"><i class="fa fa-trash"></i></button></div></div></div></div></li>';
+    }
+  });
+
+}
+
+listTasks();
+
+function addTask() {
+  console.log("Adding task");
+  // Pick all the values
+  let minuts = document.getElementById("rangeValue-minuts").innerHTML;
+  let hores = document.getElementById("rangeValue-hores").innerHTML;
+  let dies = document.getElementById("rangeValue-dies").innerHTML;
+  let mesos = document.getElementById("rangeValue-mesos").innerHTML;
+  let dies_setmana = document.getElementById("rangeValue-dies-setmana").innerHTML;
+  let task = minuts + " " + hores + " " + dies + " " + mesos + " " + dies_setmana;
+  console.log(task);
+
+
+  // fetch('/cgi-bin/add_task.sh', {
+  //   method: 'POST',
+  //   body: task
+  // })
+  // .then(response => response.text())
+  // .then(data => {
+  //   console.log(data);
+  //   listTasks();
+  // });
+}
+
+</script>
+
+</body>
+</html>

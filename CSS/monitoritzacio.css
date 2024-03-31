@@ -1,0 +1,114 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+/* --------------------CSS----------------- */
+
+body {
+	background: #222;
+	font: 16px 'Open Sans', sans-serif;
+}
+
+.box {
+	background: linear-gradient(#222, grey);
+	margin: 15px auto 0;
+	border-radius: 5px;
+	width: 250px;
+  text-align: center;
+
+}
+
+.box__header {
+	padding: 15px 25px;
+	position: relative;
+
+}
+
+.box__header-title {
+	color: #fff;
+	font-size: 24px;
+  text-emphasis: bold;
+}
+
+.box__body {
+	padding: 0 25px;
+}
+
+/* STATS */
+
+.stats {
+	color: #fff;
+	position: relative;
+	padding-bottom: 25px;
+}
+
+.stats__amount {
+	font-size: 42px;
+	font-weight: bold;
+	line-height: 1.2;
+}
+
+.stats__caption {
+	font-size: 18px;
+
+}
+
+.stats__change {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	text-align: right;
+	color: #B1B7C8;
+}
+
+.stats__value {
+	font-size: 18px;
+}
+
+.stats__period {
+	font-size: 14px;
+}
+
+.stats__value--positive {
+	color: #AEDC6F;
+}
+
+.stats__value--negative {
+	color: #FB5055;
+}
+
+.stats--main .stats__amount {
+	font-size: 54px;
+}
+
+main {
+ /*Center the screen*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 81vh;
+}
+
+.ultims-logs{
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+p{
+  text-align: center;
+  margin: 8px;
+  font-size: 19px;
+}
+
+h1{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.small-margin{
+  margin-top: 20px;
+}
